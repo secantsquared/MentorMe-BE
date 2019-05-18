@@ -1,0 +1,24 @@
+{
+  "name": "mentor-me",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "joe-alfaro <josephlalfaro@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "node index.js",
+    "server": "nodemon index.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "express": "^4.17.0",
+    "gitignore": "^0.6.0",
+    "helmet": "^3.18.0",
+    "knex": "^0.17.0-next3",
+    "morgan": "^1.9.1",
+    "node": "^12.2.0",
+    "sqlite3": "^4.0.8"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.0"
+  }
+}
