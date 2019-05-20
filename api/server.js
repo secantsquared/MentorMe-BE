@@ -17,9 +17,9 @@ server.use('/api/questions', questionsRouter);
 server.use('/', (req, res) => {
   res
     .status(200)
-    .json({
-      message: "You found it, the long lost MentorMe API. Indy would be proud."
-    })
+    .send(
+      "You found it, the long lost MentorMe API. Indy would be proud."
+    )
 });
 
 module.exports = server;
