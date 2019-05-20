@@ -1,21 +1,24 @@
 const db = require('../data/dbConfig');
 
 const getAll = () => (
-  db('questions')
+  db('questions') 
+    .innerJoin('topics', 'questions.topic_id', '=', 'topics.id')
 );
 
-const findByTopic = topic => {
-  const { id } = db('topics')
-    .where({name: topic})
-    .first();
-  
-  return db('questions')
-    .where({
-      topic_id: id
-    });
+const findBy = topic => {
+  if(topic){
+    topic = topic[0].toUpperCase()+topic.slice(1).toLowerCase();
+   return db('questions') 
+    .where({ topic: topic })
+    .innerJoin('topics', 'questions.topic_id', '=', 'topics.id')
+  }
+  else {
+   return db('questions') 
+    .innerJoin('topics', 'questions.topic_id', '=', 'topics.id');
+  }
 };
 
 module.exports = {
   getAll,
-  findByTopic
+  findBy
 }

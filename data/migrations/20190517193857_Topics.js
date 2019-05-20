@@ -3,7 +3,7 @@ exports.up = (knex, Promise) => (
     .createTable('topics', table => {
       table.increments();
 
-      table.string('name', 255)
+      table.string('topic', 255)
         .notNullable()
         .unique();
 

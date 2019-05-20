@@ -4,10 +4,10 @@ exports.seed = (knex, Promise) => (
   .then(() => ( 
       // Inserts seed entries
       knex('topics').insert([
-        {id:1, name: 'Photography'},
-        {id:2, name: 'Programming'},
-        {id:3, name: 'Small Business'},
-        {id:4, name: 'Video Editing'}
+        {id:1, topic: 'Photography'},
+        {id:2, topic: 'Programming'},
+        {id:3, topic: 'Small Business'},
+        {id:4, topic: 'Video Editing'}
       ])
   ))
 );

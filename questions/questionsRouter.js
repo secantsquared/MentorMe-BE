@@ -4,9 +4,7 @@ const router = express.Router();
 const Questions = require('./questionsModel');
 
 router.get('/', (req, res) => {
-  req.query
-    ? Questions.findByTopic(req.query)
-    : Questions.getAll()
+  Questions.findBy(req.query.search)
     .then(questions => {
       res
         .status(200)
