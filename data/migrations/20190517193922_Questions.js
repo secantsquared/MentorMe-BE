@@ -3,11 +3,18 @@ exports.up = (knex, Promise) => (
     .createTable('questions', table => {
       table.increments();
 
-      table.integer('topic')
+      table.integer('topic_id')
         .references('id')
-        .inTable('topics');
-
+        .inTable('topics')
+        .notNullable();
+        
       table.text('content')
+        .notNullable()
+        .unique();
+
+      table.integer('user_id')
+        .references('id')
+        .inTable('users')
         .notNullable();
 
       table.string('imageUrl', 255);

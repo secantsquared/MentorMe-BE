@@ -19,6 +19,11 @@ exports.up = (knex, Promise) => (
 
       table.string('location', 255);
 
+      table.integer('interest')
+        .references('id')
+        .inTable('topics')
+        .notNullable();
+
       table.timestamps(true, true);
     })
 );
