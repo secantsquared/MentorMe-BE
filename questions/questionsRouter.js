@@ -5,6 +5,7 @@ const db = require('../data/dbConfig');
 const Questions = require('./questionsModel');
 
 router.get('/', (req, res) => {
+  console.log(req.query.search)
   Questions.findBy(req.query.search)
     .then(questions => {
       res

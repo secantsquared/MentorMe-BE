@@ -7,7 +7,11 @@ const getAll = () => (
 
 const findBy = topic => {
   if(topic){
-    topic = topic[0].toUpperCase()+topic.slice(1).toLowerCase();
+    topic = topic.split(' ')
+    topic = topic.map(word => {
+      return word[0].toUpperCase()+word.slice(1).toLowerCase();
+    })
+    topic = topic.join(' ')
    return db('questions') 
     .where({ topic: topic })
       .join('topics', 'questions.topic_id', '=', 'topics.id')
