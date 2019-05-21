@@ -6,20 +6,18 @@ const numOfTopics = 4;
 const users = [];
 
 users.push({
-  fullname: 'Test',
-  location: faker.address.city(),
+  firstname: 'Test',
+  lastname: 'Account',
   email: 'test@account.com',
   password: 'password',
-  interest: 2 
 });
 
 for(let i = 0; i < 9; i++){
   users.push({
-    fullname: `${faker.name.firstName()} ${faker.name.lastName()}`,
-    location: faker.address.city(),
+    firstname: faker.name.firstName(),
+    lastname: faker.name.lastName(),
     email: faker.internet.email(),
     password: faker.lorem.word(),
-    interest: Math.floor(Math.random() * numOfTopics + 1)
   })
 };
 
