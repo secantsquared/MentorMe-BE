@@ -10,8 +10,6 @@ users.push({
   location: faker.address.city(),
   email: 'test@account.com',
   password: 'password',
-  headline: faker.lorem.sentence(),
-  description: faker.lorem.paragraph(),
   interest: 2 
 });
 
@@ -21,8 +19,6 @@ for(let i = 0; i < 9; i++){
     location: faker.address.city(),
     email: faker.internet.email(),
     password: faker.lorem.word(),
-    headline: faker.lorem.sentence(),
-    description: faker.lorem.paragraph(),
     interest: Math.floor(Math.random() * numOfTopics + 1)
   })
 };

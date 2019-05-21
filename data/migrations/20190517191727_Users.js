@@ -4,7 +4,6 @@ exports.up = (knex, Promise) => (
       table.increments();
 
       table.string('fullname', 255)
-        .notNullable();
 
       table.string('email', 255)
         .notNullable()
@@ -12,10 +11,6 @@ exports.up = (knex, Promise) => (
 
       table.string('password', 255)
         .notNullable();
-
-      table.string('headline', 255);
-
-      table.text('description');
 
       table.string('location', 255);
 
