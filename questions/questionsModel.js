@@ -10,15 +10,32 @@ const findBy = topic => {
     topic = topic[0].toUpperCase()+topic.slice(1).toLowerCase();
    return db('questions') 
     .where({ topic: topic })
-    .innerJoin('topics', 'questions.topic_id', '=', 'topics.id')
+      .join('topics', 'questions.topic_id', '=', 'topics.id')
+      .select();
   }
   else {
    return db('questions') 
-    .innerJoin('topics', 'questions.topic_id', '=', 'topics.id');
+      .join('topics', 'questions.topic_id', '=', 'topics.id')
+      .select('questions.id', 'questions.content', 'topics.topic', 'questions.updated_at');
   }
 };
 
+const findById = id => (
+  db('questions').where({id}).first()
+);
+
+const add = async question => (
+  await db('questions')
+    .insert(question)
+    .then(([id]) => {
+      return findById(id);
+    })
+);
+
+
+
 module.exports = {
   getAll,
-  findBy
+  findBy,
+  add
 }
