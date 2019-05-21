@@ -4,9 +4,8 @@ const router = express.Router();
 const db = require('../data/dbConfig');
 const Questions = require('./questionsModel');
 
-router.get('/', (req, res, next) => {
+router.get('/', (req, res) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
-  next();
   Questions.findBy(req.query.search)
     .then(questions => {
       res
@@ -20,9 +19,8 @@ router.get('/', (req, res, next) => {
     });
 });
 
-router.post('/', (req, res, next) => {
+router.post('/', (req, res) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
-  next();
   const topic_name = req.body.topic;
   let newQuestion = {};
   db('topics')
