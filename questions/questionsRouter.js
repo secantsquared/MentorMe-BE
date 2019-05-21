@@ -5,7 +5,6 @@ const db = require('../data/dbConfig');
 const Questions = require('./questionsModel');
 
 router.get('/', (req, res) => {
-  res.setHeader('Access-Control-Allow-Origin', '*');
   Questions.findBy(req.query.search)
     .then(questions => {
       res
@@ -20,7 +19,6 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-  res.setHeader('Access-Control-Allow-Origin', '*');
   const topic_name = req.body.topic;
   let newQuestion = {};
   db('topics')
