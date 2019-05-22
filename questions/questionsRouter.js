@@ -45,10 +45,46 @@ router.post('/', (req, res) => {
     });
 });
 
-router.get('/:id', () => {
+router.put('/:id', (req, res) => {
+  Questions.findById(req.params.id)
+    .then(question => {
+      if(!question){
+        res
+          .status(404)
+          .json({
+            message: "Can't change a question that isn't there."
+          });
+      }
+    })
+    Questions.change(req.params.id, {...req.body})
+      .then(question => {
+        res
+          .status(200)
+            .json(question)
+      })
+});
 
-})
-
-router.put('/:id', () => {})
+router.delete('/:id', (req, res) => {
+  Questions.findById(req.params.id)
+    .then(question => {
+      if(!question){
+        res
+          .status(404)
+          .json({
+            message: "Can't delete a question that isn't there."
+          });
+      }
+      else {
+      Questions.remove(id)
+          .then(question => {
+            res
+              .status(200)
+              .json({
+                message: `This question: '${question}', was deleted.`
+              })
+          })
+      }
+    })
+});
 
 module.exports = router;

@@ -40,10 +40,25 @@ const add = async question => (
     })
 );
 
-
+const change = async (id, question) => {
+  await db('questions')
+    .where('questions.id', '=', id)
+    .update(
+      {...question},
+    )
+}
+const remove = user => (
+  db('questions')
+  .where({id})
+  .first()
+  .del()
+)
 
 module.exports = {
   getAll,
   findBy,
-  add
+  findById,
+  add,
+  change,
+  remove
 }
