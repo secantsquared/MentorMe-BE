@@ -8,27 +8,6 @@ const db = require('../data/dbConfig');
 const Users = require('./usersModel');
 
 router.post('/register', (req, res) => {
-  if(!req.body.email){
-    res
-    .status(404)
-    .json({message: 'missing email'})
-  }
-  if(!req.body.password){
-    res
-    .status(404)
-    .json({message: 'missing password'})
-  }
-  if(!req.body.firstname){
-    res
-    .status(404)
-    .json({message: 'missing firstname'})
-  }
-  if(!req.body.email){
-    res
-    .status(404)
-    .json({message: 'missing lastname'})
-  }
-
   const hash = bcrypt.hashSync(req.body.password, 10);
   const newUser = {
     ...req.body,
@@ -61,6 +40,7 @@ router.post('/login', (req, res) => {
         res
           .status(200)
           .json({
+            ...user,
             token
           });
       }
