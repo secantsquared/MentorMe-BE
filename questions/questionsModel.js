@@ -40,19 +40,30 @@ const add = async question => (
     })
 );
 
-const change = async (id, question) => {
+const change = async (question_id, question) => (
   await db('questions')
-    .where('questions.id', '=', id)
+    .where({id: question_id})
     .update(
       {...question},
+      ['id']
     )
-}
-const remove = user => (
-  db('questions')
-  .where({id})
-  .first()
-  .del()
+    .then(id => {
+      return findById(id);
+    })
 )
+
+const remove = async (question_id, question) => {
+  const deleted = await db('questions')
+    .where({ id: question_id })
+    .first();
+
+  await db('questions')
+    .where({id: question_id})
+    .first()
+    .del()
+
+  return deleted.content;
+};
 
 module.exports = {
   getAll,

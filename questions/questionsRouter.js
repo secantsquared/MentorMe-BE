@@ -46,7 +46,7 @@ router.post('/', (req, res) => {
 });
 
 router.put('/:id', (req, res) => {
-  Questions.findById(req.params.id)
+  db('questions').where({id: req.params.id}).first()
     .then(question => {
       if(!question){
         res
@@ -65,7 +65,7 @@ router.put('/:id', (req, res) => {
 });
 
 router.delete('/:id', (req, res) => {
-  Questions.findById(req.params.id)
+  db('questions').where({id: req.params.id}).first()
     .then(question => {
       if(!question){
         res
@@ -75,7 +75,7 @@ router.delete('/:id', (req, res) => {
           });
       }
       else {
-      Questions.remove(id)
+      Questions.remove(req.params.id)
           .then(question => {
             res
               .status(200)
