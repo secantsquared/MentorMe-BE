@@ -46,7 +46,7 @@ router.post('/', (req, res) => {
 });
 
 router.put('/:id', (req, res) => {
-  db('questions').where({id: req.params.id}).first()
+  Questions.findById(req.params.id)
     .then(question => {
       if(!question){
         res
@@ -65,7 +65,7 @@ router.put('/:id', (req, res) => {
 });
 
 router.delete('/:id', (req, res) => {
-  db('questions').where({id: req.params.id}).first()
+  Questions.findById(req.params.id)
     .then(question => {
       if(!question){
         res

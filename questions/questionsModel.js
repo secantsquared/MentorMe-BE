@@ -26,7 +26,7 @@ const findBy = topic => {
 
 const findById = id => (
   db('questions')
-    .where({id})
+    .where('questions.id', id)
     .first()
     .join('topics', 'questions.topic_id', '=', 'topics.id')
     .select('questions.id', 'questions.content', 'topics.topic', 'questions.updated_at', 'questions.user_id')
@@ -40,22 +40,23 @@ const add = async question => (
     })
 );
 
-const change = async (question_id, question) => (
+const change = async (question_id, question) => {
+  question = {
+    ...question,
+    id: question_id
+  }
+
   await db('questions')
     .where({id: question_id})
     .update(
       {...question},
-      ['id']
-    )
-    .then(id => {
-      return findById(id);
-    })
-)
+    );
+
+  return await findById(question_id);
+}
 
 const remove = async (question_id, question) => {
-  const deleted = await db('questions')
-    .where({ id: question_id })
-    .first();
+  const deleted = await findById(question_id);
 
   await db('questions')
     .where({id: question_id})
