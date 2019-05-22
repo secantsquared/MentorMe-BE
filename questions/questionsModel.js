@@ -41,9 +41,15 @@ const add = async question => (
 );
 
 const change = async (question_id, question) => {
+  const topic = await db('topics')
+    .select('id')
+    .where({topic: question.topic})
+    .first()
+
   question = {
-    ...question,
-    id: question_id
+    id: question_id,
+    content: question.content,
+    topic_id: topic.id  
   }
 
   await db('questions')
