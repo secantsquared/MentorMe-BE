@@ -1,10 +1,11 @@
 const express = require('express');
 const router = express.Router();
 
+const { verifyToken } = require('../auth/helpers');
 const db = require('../data/dbConfig');
 const Questions = require('./questionsModel');
 
-router.get('/', (req, res) => {
+router.get('/', verifyToken, (req, res) => {
   Questions.findBy(req.query.search)
     .then(questions => {
       res
@@ -18,7 +19,7 @@ router.get('/', (req, res) => {
     });
 });
 
-router.post('/', (req, res) => {
+router.post('/', verifyToken, (req, res) => {
   const topic_name = req.body.topic;
   let newQuestion = {};
   db('topics')
@@ -45,7 +46,7 @@ router.post('/', (req, res) => {
     });
 });
 
-router.put('/:id', (req, res) => {
+router.put('/:id', verifyToken, (req, res) => {
   Questions.findById(req.params.id)
     .then(question => {
       if(!question){
@@ -64,7 +65,7 @@ router.put('/:id', (req, res) => {
       })
 });
 
-router.delete('/:id', (req, res) => {
+router.delete('/:id', verifyToken, (req, res) => {
   Questions.findById(req.params.id)
     .then(question => {
       if(!question){

@@ -14,6 +14,23 @@ const generateToken = user => {
   return jwt.sign(payload, secrets.jwtSecret, options);
 }
 
+verifyToken = (req, res, next) => {
+  const token = req.headers.authorization;
+
+  jwt.verify(token, secrets.jwtSecret, (err, decodedToken) => {
+    if(err) {
+      res
+        .status(401)
+        .json(err)
+    }
+    else {
+      req.decodedToken = decodedToken;
+      next();
+    }
+  });
+};
+
 module.exports = {
   generateToken,
+  verifyToken
 };
