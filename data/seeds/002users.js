@@ -1,4 +1,5 @@
 const faker = require('faker');
+const bcrypt = require('bcryptjs');
 
 const db = require('../dbConfig');
 
@@ -9,7 +10,7 @@ users.push({
   firstname: 'Test',
   lastname: 'Account',
   email: 'test@account.com',
-  password: 'password',
+  password: bcrypt.hashSync('password', 10)
 });
 
 for(let i = 0; i < 9; i++){
