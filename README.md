@@ -5,7 +5,8 @@
       content: *string*,
       topic: *string*,
       imageUrl: *string/nullable*,
-      updated_at: *datetime*
+      updated_at: *datetime*,
+      user_id: *integer*
     }
 
 `GET /api/questions?search=*topic*` will return all questions with the matching topic. Topic is not case sensitive but for now only accepts whole words spelled correctly.
