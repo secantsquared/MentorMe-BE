@@ -19,7 +19,9 @@
     "knex": "^0.17.0-next3",
     "morgan": "^1.9.1",
     "node": "^12.2.0",
-    "sqlite3": "^4.0.8"
+    "sqlite3": "^4.0.9",
+    "twilio": "^3.31.0",
+    "twilio-chat": "^3.2.3"
   },
   "devDependencies": {
     "faker": "^4.1.0",
