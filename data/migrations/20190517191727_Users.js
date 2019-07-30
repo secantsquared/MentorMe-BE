@@ -3,7 +3,10 @@ exports.up = (knex, Promise) => (
     .createTable('users', table => {
       table.increments();
 
-      table.string('fullname', 255)
+      table.string('firstname', 255)
+        .notNullable();
+
+      table.string('lastname', 255)
         .notNullable();
 
       table.string('email', 255)
@@ -11,17 +14,6 @@ exports.up = (knex, Promise) => (
         .unique();
 
       table.string('password', 255)
-        .notNullable();
-
-      table.string('headline', 255);
-
-      table.text('description');
-
-      table.string('location', 255);
-
-      table.integer('interest')
-        .references('id')
-        .inTable('topics')
         .notNullable();
 
       table.timestamps(true, true);
