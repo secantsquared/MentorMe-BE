@@ -16,7 +16,6 @@
     "cors": "^2.8.5",
     "dotenv": "^8.0.0",
     "express": "^4.17.0",
-    "gitignore": "^0.6.0",
     "helmet": "^3.18.0",
     "jsonwebtoken": "^8.5.1",
     "knex": "^0.17.0-next3",
@@ -24,11 +23,9 @@
     "morgan": "^1.9.1",
     "node": "^12.2.0",
     "sqlite3": "^4.0.9",
-    "twilio": "^3.31.0",
-    "twilio-chat": "^3.2.3"
+    "faker": "^4.1.0"
   },
   "devDependencies": {
-    "faker": "^4.1.0",
     "nodemon": "^1.19.0"
   }
 }
