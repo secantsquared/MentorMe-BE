@@ -1,6 +1,9 @@
 {
   "name": "mentor-me",
   "version": "1.0.0",
+  "engines": {
+    "node": "^12.2.0"
+  },
   "main": "index.js",
   "author": "joe-alfaro <josephlalfaro@gmail.com>",
   "license": "MIT",
